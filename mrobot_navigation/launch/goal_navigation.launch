@@ -1,0 +1,8 @@
+<launch>
+
+    
+    <include file="$(find mrobot_gazebo)/launch/mrobot_laser_nav_gazebo.launch"/>
+    <include file="$(find mrobot_navigation)/launch/exploring_slam_demo.launch"/>
+    <node pkg="mrobot_navigation" type="move_base_goal" name="move_base_goal"/>
+
+</launch>
