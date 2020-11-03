@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<robot name="jian_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include filename="$(find mrobot_gazebo)/urdf/jian_robot_body.urdf.xacro" />
+	<xacro:include filename="$(find mrobot_gazebo)/urdf/rplidar.xacro" />
+
+	<xacro:property name="rplidar_offset_x" value="0" />
+	<xacro:property name="rplidar_offset_y" value="0" />
+	<xacro:property name="rplidar_offset_z" value="0.7" />
+
+
+	<!-- Body of mrobot, with plates, standoffs -->
+	<jian_robot_body/>
+        <!-- Attach the Kinect -->
+	<joint name="rplidar_joint" type="fixed">
+		<origin xyz="${rplidar_offset_x} ${rplidar_offset_y} ${rplidar_offset_z}" rpy="0 0 0" />
+		<parent link="base_link"/>
+		<child link="laser_link"/>
+	</joint>
+	<xacro:rplidar prefix="laser"/>
+</robot>
+
